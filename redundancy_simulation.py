@@ -1,17 +1,10 @@
 """
 Simulation: Active Broadcast vs Passive Decoherence in Redundant Record Formation
-Version 2.0 - With rigorous fixes
 
 This code demonstrates the core claim of Walshe (2026):
 - Passive environmental decoherence produces topology-dependent sub-exponential redundancy growth
 - Active broadcast channels produce exponential/logistic redundancy growth
 - These lead to qualitatively different stability/irreversibility thresholds
-
-Fixes applied:
-1. Theoretical curve now uses logistic growth (matches actual model dynamics)
-2. Passive tested on multiple topologies (1D, 2D grid, random geometric)
-3. Proper stability metric: P(erase all) = p^R(t)
-4. Irreversibility threshold defined as fraction of total nodes N
 
 Author: Michael William Perry Walshe
 """
@@ -178,7 +171,7 @@ def active_broadcast(n_nodes: int, n_steps: int, fan_out: int = 3,
 
 
 # ============================================================================
-# THEORETICAL CURVES (FIXED)
+# THEORETICAL CURVE
 # ============================================================================
 
 def theoretical_passive_1d(t: np.ndarray, coupling: float = 0.3) -> np.ndarray:
@@ -405,7 +398,7 @@ def print_rigorous_summary(results: dict, n_nodes: int = 900):
     """Print comprehensive statistics with proper metrics."""
     
     print("=" * 75)
-    print("SIMULATION RESULTS v2.0: Rigorous Channel-Class Comparison")
+    print("SIMULATION RESULTS : Rigorous Channel-Class Comparison")
     print("=" * 75)
     print()
     

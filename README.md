@@ -6,9 +6,10 @@ Walshe, M.W.P. (2026). "Active Broadcast Versus Passive Decoherence in Redundant
 
 ## Overview
 
-This repository contains simulation code demonstrating that **the mechanism of redundancy generation affects stability thresholds** in redundant record formation (relevant to quantum Darwinism).
+This repository contains simulation code illustrating a channel-level distinction in redundant record formation, relevant to quantum Darwinism and the emergence of classical objectivity.
 
-**Core finding:** Locality-constrained passive coupling produces topology-dependent sub-exponential redundancy growth, while selective broadcast channels exhibit early-time exponential growth and sharply lower stability thresholds. The distinction is channel-structural rather than interpretive.
+Core result:
+Locality-constrained passive coupling produces topology-dependent, sub-exponential redundancy growth, while selective broadcast channels exhibit early-time exponential growth and reach stability thresholds far more rapidly. The distinction is channel-structural, not interpretive.
 
 ## Key Results
 
@@ -20,13 +21,13 @@ This repository contains simulation code demonstrating that **the mechanism of r
 
 ## Files
 
-- `redundancy_simulation_v2.py` — Main simulation with multiple topologies
-- `redundancy_simulation_v2.png` — Publication-quality figure
+- `redundancy_simulation.py` — Main simulation with multiple topologies
+- `redundancy_simulation.png` — Publication-quality figure
 
 ## Usage
 
 ```bash
-python redundancy_simulation_v2.py
+python redundancy_simulation.py
 ```
 
 Requires: `numpy`, `matplotlib`

@@ -3,7 +3,7 @@
 **Simulation code accompanying:**
 
 Perry Walshe, Michael William (2026). "Active Broadcast Versus Passive Decoherence in Redundant Record Formation." arXiv:quant-ph [pending]
-
+Paper available:https://zenodo.org/records/18402840?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjcyMTgyNmE5LTcwNWMtNDc0Ni1iYWVjLTk5MjZmNWQ0ZTdiNCIsImRhdGEiOnt9LCJyYW5kb20iOiIxNGIyMmZiZGJjMDEzY2UxMjA4YzkwODgyNmQ4ZTEzYyJ9.ArpKFmDv4OCN4e_tHeIN29uzUjT1igo1M4fChS3fUrOrmRtuL9Ri-mGvbAclWWOl_ODVtFaDfXlJR3KsGRXUrg
 ## Overview
 
 This repository contains simulation code illustrating a channel-level distinction in redundant record formation, relevant to quantum Darwinism and the emergence of classical objectivity.

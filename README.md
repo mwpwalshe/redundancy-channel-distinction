@@ -2,7 +2,7 @@
 
 **Simulation code accompanying:**
 
-Walshe, M.W.P. (2026). "Active Broadcast Versus Passive Decoherence in Redundant Record Formation." arXiv:quant-ph [pending]
+Perry Walshe, Michael William (2026). "Active Broadcast Versus Passive Decoherence in Redundant Record Formation." arXiv:quant-ph [pending]
 
 ## Overview
 
@@ -64,9 +64,9 @@ where `p` is per-node erasure probability and `R(t)` is redundancy at time t.
 If you use this code, please cite:
 
 ```bibtex
-@article{walshe2026redundancy,
+@article{perry-walshe2026redundancy,
   title={Active Broadcast Versus Passive Decoherence in Redundant Record Formation},
-  author={Walshe, Michael William Perry},
+  author={Perry Walshe, Michael William},
   journal={arXiv preprint},
   year={2026}
 }

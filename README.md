@@ -67,7 +67,6 @@ If you use this code, please cite:
 @article{perry-walshe2026redundancy,
   title={Active Broadcast Versus Passive Decoherence in Redundant Record Formation},
   author={Perry Walshe, Michael William},
-  journal={arXiv preprint},
   year={2026}
 }
 ```

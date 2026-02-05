@@ -66,7 +66,15 @@ Requires: `numpy`, `matplotlib`, `scipy`
 | fig6 | 2D phase diagram: erasure × relay recruitment |
 | fig7 | 95% bootstrap confidence intervals (500 resamples) |
 | fig8 | Small-world topology interpolation (Watts–Strogatz) |
+Citation
+If you use this code, please cite:
 
+@article{perry-walshe2026redundancy,
+  title={Active Broadcast Versus Passive Decoherence in Redundant Record Formation},
+  author={Perry Walshe, Michael William},
+  pending publication Zenodo
+  year={2026}
+}
 ## License
 
 MIT

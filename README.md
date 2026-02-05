@@ -1,85 +1,72 @@
 # Redundancy Channel Distinction
 
-**Simulation code accompanying:**
+Simulation code accompanying:
 
-Perry Walshe, Michael William (2026). "Active Broadcast Versus Passive Decoherence in Redundant Record Formation." arXiv:quant-ph [pending]
-Paper available:https://zenodo.org/records/18402840?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjcyMTgyNmE5LTcwNWMtNDc0Ni1iYWVjLTk5MjZmNWQ0ZTdiNCIsImRhdGEiOnt9LCJyYW5kb20iOiIxNGIyMmZiZGJjMDEzY2UxMjA4YzkwODgyNmQ4ZTEzYyJ9.ArpKFmDv4OCN4e_tHeIN29uzUjT1igo1M4fChS3fUrOrmRtuL9Ri-mGvbAclWWOl_ODVtFaDfXlJR3KsGRXUrg
+Perry Walshe, Michael William (2026). "Active Broadcast Versus Passive Decoherence in Redundant Record Formation."
+
+- **Paper (Zenodo):** [https://zenodo.org/records/18496899](https://zenodo.org/records/18496899)
+- **Submitted to:** Foundations of Physics
+
 ## Overview
 
 This repository contains simulation code illustrating a channel-level distinction in redundant record formation, relevant to quantum Darwinism and the emergence of classical objectivity.
 
-Core result:
-Locality-constrained passive coupling produces topology-dependent, sub-exponential redundancy growth, while selective broadcast channels exhibit early-time exponential growth and reach stability thresholds far more rapidly. The distinction is channel-structural, not interpretive.
+**Core result:** Passive channels (local coupling) produce polynomial redundancy spreading times T(N) ~ N^β, while active broadcast channels (non-local, high fan-out) produce logarithmic spreading times T(N) ~ ln(N). The gap between these scaling classes increases systematically with system size — reaching 211× at N = 1600 — and is consistent with Lieb–Robinson bounds on information propagation in locally-coupled systems.
 
 ## Key Results
 
-| Channel Type | Redundancy Growth | Time to 50% Threshold (N=900) |
-|--------------|-------------------|-------------------------------|
-| Passive (1D line) | O(t) linear | >35 steps (not reached) |
-| Passive (2D grid) | O(t²) quadratic | >35 steps (not reached) |
-| Active Broadcast | O(exp(αt)) early-time | 5 steps |
+| Channel Type | Scaling Class | Fitted Exponent | T(θ=0.5) at N=900 |
+|---|---|---|---|
+| Passive (1D chain, deg 2) | Polynomial | β = 1.01 ± 0.01 | >50 steps |
+| Passive (2D grid, deg 4) | Polynomial | β = 0.50 ± 0.12 | ~43 steps |
+| Passive (RGG, deg ≈ 8) | Polynomial | β = 0.44 ± 0.07 | ~28 steps |
+| Active Broadcast (k=10) | Logarithmic | T ≈ 2.2 ln N − 7.9 | ~7 steps |
 
 ## Files
 
-- `redundancy_simulation.py` — Main simulation with multiple topologies
-- `redundancy_simulation.png` — Publication-quality figure
+- `all_figures.py` — Main simulation generating Figures 1–7 (channel comparison, scaling, phase diagrams, collapse validation, bootstrap CIs)
+- `fig8_smallworld_v2.py` — Small-world topology interpolation (Watts–Strogatz, Figure 8)
+- `figures/` — Publication-quality PNGs for all 8 figures
 
 ## Usage
 
 ```bash
-python redundancy_simulation.py
+python3 all_figures.py              # Figures 1-7 (full mode, ~10-15 min)
+python3 all_figures.py --quick      # Figures 1-7 (quick mode, ~2 min)
+python3 fig8_smallworld_v2.py       # Figure 8
 ```
 
-Requires: `numpy`, `matplotlib`
+Requires: `numpy`, `matplotlib`, `scipy`
 
 ## What This Demonstrates
 
-1. **Passive redundancy growth depends on topology:**
-   - 1D line → O(t) linear
-   - 2D grid → O(t²) quadratic
-   - Both are sub-exponential
+1. **Scaling-class separation:** Passive channels exhibit topology-dependent polynomial scaling; active broadcast exhibits logarithmic scaling. These are distinct scaling classes, not parameter artefacts.
 
-2. **Active broadcast produces logistic/exponential growth:**
-   - Early regime: R(t) ~ exp(αt), α ≈ selectivity × fan_out
-   - Saturates at N
+2. **Robustness across parameter space:** Active broadcast dominates across the full erasure × relay recruitment space (Figure 6), with speedups of 40×–474× over 1D passive.
 
-3. **Stability thresholds differ qualitatively:**
-   - Active achieves >99% survival probability within ~5 steps
-   - Passive (1D) may never reach high stability in bounded time
+3. **Small-world transition:** Even a small fraction of non-local shortcuts (p ≈ 0.005–0.02) shifts the scaling exponent from polynomial toward sub-polynomial (Figure 8), consistent with the Lieb–Robinson interpretation.
 
-4. **Channel class—not just final redundancy—determines stability.**
+4. **Dynamic erasure model:** Survival is emergent under per-step stochastic erasure — not computed from a static formula. Apparatus nodes (broadcasters) are modelled as persistent measurement amplifiers; relay nodes can be erased.
 
-## Stability Metric
+## Model
 
-We use a proper stability metric rather than naive copy count:
+- **Passive:** Local spreading on graph edges (1D chain, 2D grid, random geometric graph) with per-step dynamic erasure (p_erase = 0.05/step)
+- **Active:** k=10 fixed broadcaster nodes (protected apparatus) with relay recruitment (p_relay); relays have lower fan-out and can be erased
+- **Threshold:** T(θ, N) = time for R(t) ≥ θN, with θ = 0.5
 
-```
-P(record survives) = 1 - p^R(t)
-```
+## Figures
 
-where `p` is per-node erasure probability and `R(t)` is redundancy at time t.
-
-## Citation
-
-If you use this code, please cite:
-
-```bibtex
-@article{perry-walshe2026redundancy,
-  title={Active Broadcast Versus Passive Decoherence in Redundant Record Formation},
-  author={Perry Walshe, Michael William},
-  year={2026}
-}
-```
+| Figure | Description |
+|---|---|
+| fig1 | Channel-class distinction at fixed N=900 |
+| fig2 | Log-log scaling with polynomial/logarithmic fits |
+| fig3 | Relay recruitment phase diagram (N=1600) |
+| fig4 | Executive summary dashboard |
+| fig5 | Scaling collapse validation (T/N^β and T/ln N) |
+| fig6 | 2D phase diagram: erasure × relay recruitment |
+| fig7 | 95% bootstrap confidence intervals (500 resamples) |
+| fig8 | Small-world topology interpolation (Watts–Strogatz) |
 
 ## License
 
-MIT License
-
-## Author
-
-Michael William Perry Walshe, BSc, M.Eng, MSc  
-Independent Researcher, Ireland
-
-## Acknowledgements
-
-The author acknowledges the use of AI-assisted tools for drafting and literature review. All conceptual content, simulations, and analysis are the author's own work.
+MIT
